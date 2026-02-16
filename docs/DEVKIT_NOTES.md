@@ -189,6 +189,7 @@ For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).
 For the development roadmap, see [ROADMAP.md](ROADMAP.md).  
 For the extension development model, see [DEVKIT_NOTES.md](DEVKIT_NOTES.md).  
 For strategic positioning, see [POSITIONING.md](POSITIONING.md).  
+For market analysis and TAM, see [MARKET_ANALYSIS.md](MARKET_ANALYSIS.md).  
 
 ---
 
@@ -204,15 +205,18 @@ snptx-public/
     +-- VISION.md
     +-- POSITIONING.md
     +-- INVESTOR_BRIEF.md
+    +-- MARKET_ANALYSIS.md
     +-- assets/
         +-- agentic_workflow.png
         +-- discovery_loop.png
         +-- extension_lifecycle.png
+        +-- market_growth.png
         +-- multimodal_framework.png
         +-- positioning_matrix.png
         +-- self_learning_trajectory.png
         +-- snptx_architecture.png
         +-- SNPTX_Project_roadmap.png
+        +-- tam_sam_som.png
         +-- workflow_dag.png
 ```
 
