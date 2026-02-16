@@ -8,6 +8,8 @@ The system is designed for environments where computational results must survive
 
 ## System-Level Intelligence Objective
 
+![Self-Learning Trajectory](assets/self_learning_trajectory.png)
+
 SNPTX is architected to evolve from a deterministic execution framework into a system capable of structured self-assessment. The long-term objective is not autonomous decision-making, but structured insight synthesis: a system that identifies patterns across its own evaluation outputs, surfaces hypotheses for investigation, and flags anomalies that merit human attention.
 
 The trajectory is deliberate:
@@ -15,9 +17,10 @@ The trajectory is deliberate:
 1. **Deterministic execution.** The system produces reliable, reproducible outputs. *(Complete)*
 2. **Structured evaluation.** Downstream extensions normalize, aggregate, and report on outputs. *(Complete)*
 3. **Deep learning integration.** Transformer, GNN, and foundation model pipelines operate within deterministic infrastructure. *(Planned)*
-4. **Cross-run synthesis.** The system identifies patterns and anomalies across evaluation histories. *(Planned)*
-5. **Hypothesis generation.** Structured suggestions emerge from accumulated evidence. *(Planned)*
-6. **Closed-loop feedback.** Insights flow back into pipeline configuration through governed artifact channels. *(Planned)*
+4. **Agentic workflow execution.** Autonomous agents author extensions, execute pipelines, synthesize evaluations, and propose configurations. *(Planned)*
+5. **Cross-run synthesis.** The system identifies patterns and anomalies across evaluation histories. *(Planned)*
+6. **Hypothesis generation.** Structured suggestions emerge from accumulated evidence. *(Planned)*
+7. **Closed-loop feedback.** Insights flow back into pipeline configuration through governed artifact channels. *(Planned)*
 
 This intelligence layer will operate through the same artifact-driven interface as all other extensions. It will not automate retraining without explicit authorization. The feedback loop is advisory and traceable by design.
 
@@ -42,7 +45,46 @@ The end state is a system where the distance between a research question and a r
 
 ---
 
-## Contact
+## Documentation
+
+For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).  
+For the development roadmap, see [ROADMAP.md](ROADMAP.md).  
+For the extension development model, see [DEVKIT_NOTES.md](DEVKIT_NOTES.md).  
+For strategic positioning, see [POSITIONING.md](POSITIONING.md).  
+
+---
+
+## Repository Structure
+
+```
+snptx-public/
++-- README.md
++-- docs/
+    +-- ARCHITECTURE.md
+    +-- ROADMAP.md
+    +-- DEVKIT_NOTES.md
+    +-- VISION.md
+    +-- POSITIONING.md
+    +-- INVESTOR_BRIEF.md
+    +-- assets/
+        +-- agentic_workflow.png
+        +-- discovery_loop.png
+        +-- extension_lifecycle.png
+        +-- multimodal_framework.png
+        +-- positioning_matrix.png
+        +-- self_learning_trajectory.png
+        +-- snptx_architecture.png
+        +-- SNPTX_Project_roadmap.png
+        +-- workflow_dag.png
+```
+
+This repository contains documentation and architectural specifications only. Source code, datasets, model artifacts, and execution scripts are maintained in private repositories.
+
+---
+
+## Team
+
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
 
 - drr508@g.harvard.edu
 - dan@snptx.ai

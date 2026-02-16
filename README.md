@@ -113,7 +113,7 @@ Each stage emits persisted, immutable artifacts that serve as the sole interface
 The execution domain (core) and the interpretation domain (extensions) are architecturally separated through contract validation and physical repository isolation. This allows model architectures to change independently of evaluation logic.
 
 **2. Contract-Driven Extension System.**
-Extensions declare typed input/output contracts validated at runtime. The owner-runner generates deterministic run IDs, captures logs, and produces auditable manifests. Contributors can build analytical modules without touching training pipelines.
+Extensions declare typed input/output contracts validated at runtime. The agentic execution layer generates deterministic run IDs, captures logs, and produces auditable manifests. Agentic workflows can build and execute analytical modules without touching training pipelines.
 
 **3. Deterministic Infrastructure for Experimentation.**
 Fixed seeds, versioned configurations, and reproducible DAGs create structural conditions for reliable experimentation. This is the enabling layer for deep learning research where reproducibility is critical for both scientific credibility and iterative model development.
@@ -136,7 +136,7 @@ Pharmaceutical R&D timelines are measured in years and billions of dollars. Stru
 ### Deployment Opportunity
 
 - **Pharma and biotech R&D** running multi-model, multi-dataset discovery pipelines
-- **Research labs** conducting reproducible computational studies across collaborators
+- **Research labs** conducting reproducible computational studies with agentic workflow automation
 - **Clinical AI development** requiring full pipeline provenance for deployment
 - **Consortium-scale projects** where multiple teams contribute analysis across institutions
 
@@ -145,7 +145,7 @@ Pharmaceutical R&D timelines are measured in years and billions of dollars. Stru
 ## Growth Strategy
 
 ### Phase 1: Research Lab Deployment
-Establish SNPTX as the orchestration layer for reproducible biomedical ML. Demonstrate value through deterministic execution, structured collaboration, and multi-model comparison.
+Establish SNPTX as the orchestration layer for reproducible biomedical ML. Demonstrate value through deterministic execution, agentic workflow integration, and multi-model comparison.
 
 ### Phase 2: Deep Learning Integration
 Expand pipeline support for transformer, GNN, and foundation model architectures. Build embedding registry and cross-run synthesis capabilities.
@@ -181,10 +181,10 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 
 ## Documentation
 
-For detailed technical architecture, see [ARCHITECTURE.md](docs/ARCHITECTURE.md).
-For the development roadmap, see [ROADMAP.md](docs/ROADMAP.md).
-For the extension development model, see [DEVKIT_NOTES.md](docs/DEVKIT_NOTES.md).
-For strategic positioning, see [POSITIONING.md](docs/POSITIONING.md).
+For detailed technical architecture, see [ARCHITECTURE.md](docs/ARCHITECTURE.md).  
+For the development roadmap, see [ROADMAP.md](docs/ROADMAP.md).  
+For the extension development model, see [DEVKIT_NOTES.md](docs/DEVKIT_NOTES.md).  
+For strategic positioning, see [POSITIONING.md](docs/POSITIONING.md).  
 
 ---
 
@@ -201,9 +201,12 @@ snptx-public/
     +-- POSITIONING.md
     +-- INVESTOR_BRIEF.md
     +-- assets/
+        +-- agentic_workflow.png
         +-- discovery_loop.png
+        +-- extension_lifecycle.png
         +-- multimodal_framework.png
         +-- positioning_matrix.png
+        +-- self_learning_trajectory.png
         +-- snptx_architecture.png
         +-- SNPTX_Project_roadmap.png
         +-- workflow_dag.png
@@ -213,7 +216,9 @@ This repository contains documentation and architectural specifications only. So
 
 ---
 
-## Contact
+## Team
+
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
 
 - drr508@g.harvard.edu
 - dan@snptx.ai

@@ -78,9 +78,25 @@ SNPTX occupies a unique position: deep infrastructure depth combined with struct
 
 ---
 
+## Agentic Workflow Differentiation
+
+SNPTX is architected for agentic execution: autonomous AI agents that build extensions, run pipelines, synthesize evaluations, and propose experimental configurations without manual intervention.
+
+| Capability | Traditional MLOps | SNPTX Agentic Model |
+|---|---|---|
+| Extension authoring | Manual development | Agent-generated with contract validation |
+| Pipeline execution | Human-triggered | Agent-invoked with deterministic guarantees |
+| Evaluation synthesis | Ad hoc analysis | Agent-driven cross-run comparison |
+| Configuration changes | Manual editing | Agent-proposed through governed artifact channels |
+| Hypothesis generation | Informal | Structured agent-generated suggestions |
+
+The deterministic, contract-driven architecture makes SNPTX uniquely suited to agentic workflows. Agents operate within well-defined boundaries, produce auditable outputs, and cannot violate reproducibility guarantees.
+
+---
+
 ## Who This Is For
 
-- **Research labs** running reproducible deep learning experiments across collaborators
+- **Research labs** running reproducible deep learning experiments with agentic workflow automation
 - **Pharma and biotech R&D teams** comparing model architectures for drug discovery pipelines
 - **Clinical AI developers** building tools that require full pipeline provenance
 - **Consortium projects** where multiple institutions contribute analysis across modalities
@@ -88,7 +104,46 @@ SNPTX occupies a unique position: deep infrastructure depth combined with struct
 
 ---
 
-## Contact
+## Documentation
+
+For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).  
+For the development roadmap, see [ROADMAP.md](ROADMAP.md).  
+For the extension development model, see [DEVKIT_NOTES.md](DEVKIT_NOTES.md).  
+For strategic positioning, see [POSITIONING.md](POSITIONING.md).  
+
+---
+
+## Repository Structure
+
+```
+snptx-public/
++-- README.md
++-- docs/
+    +-- ARCHITECTURE.md
+    +-- ROADMAP.md
+    +-- DEVKIT_NOTES.md
+    +-- VISION.md
+    +-- POSITIONING.md
+    +-- INVESTOR_BRIEF.md
+    +-- assets/
+        +-- agentic_workflow.png
+        +-- discovery_loop.png
+        +-- extension_lifecycle.png
+        +-- multimodal_framework.png
+        +-- positioning_matrix.png
+        +-- self_learning_trajectory.png
+        +-- snptx_architecture.png
+        +-- SNPTX_Project_roadmap.png
+        +-- workflow_dag.png
+```
+
+This repository contains documentation and architectural specifications only. Source code, datasets, model artifacts, and execution scripts are maintained in private repositories.
+
+---
+
+## Team
+
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
 
 - drr508@g.harvard.edu
 - dan@snptx.ai

@@ -223,8 +223,74 @@ None require changes to the core framework.
 
 ---
 
-## Contact
+## 10. Agentic Workflow Integration
 
-For architectural questions or collaboration inquiries:
+![Agentic Workflow Architecture](assets/agentic_workflow.png)
+
+SNPTX is designed to be operated by agentic workflows: autonomous or semi-autonomous AI agents that execute pipeline stages, generate extensions, run evaluations, and synthesize results without manual intervention.
+
+### Why Agentic Execution Fits SNPTX
+
+| Architectural Property | Agentic Benefit |
+|---|---|
+| Deterministic DAG execution | Agents produce identical results regardless of invocation context |
+| Contract-driven extensions | Agents can generate and validate extensions against typed schemas |
+| Configuration-as-code | Agents modify behavior through YAML, not source code |
+| Artifact immutability | Agent-generated outputs are versioned and auditable |
+| Separation of execution and interpretation | Agents operate independently in core and extension domains |
+
+### Agentic Execution Model
+
+1. **Pipeline execution.** Agents invoke Snakemake DAGs with specific configurations, producing deterministic outputs.
+2. **Extension generation.** Agents author new extensions with contract declarations, validated before execution.
+3. **Evaluation synthesis.** Agents run cross-run synthesis extensions to identify patterns across experiment histories.
+4. **Configuration adjustment.** Agents propose configuration changes through governed artifact channels, subject to human-in-the-loop review.
+5. **Hypothesis generation.** Agents surface structured experimental suggestions from accumulated evidence.
+
+The deterministic, artifact-driven architecture ensures that agentic execution is fully reproducible and auditable. Every agent action produces versioned artifacts with complete provenance.
+
+---
+
+## Documentation
+
+For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).  
+For the development roadmap, see [ROADMAP.md](ROADMAP.md).  
+For the extension development model, see [DEVKIT_NOTES.md](DEVKIT_NOTES.md).  
+For strategic positioning, see [POSITIONING.md](POSITIONING.md).  
+
+---
+
+## Repository Structure
+
+```
+snptx-public/
++-- README.md
++-- docs/
+    +-- ARCHITECTURE.md
+    +-- ROADMAP.md
+    +-- DEVKIT_NOTES.md
+    +-- VISION.md
+    +-- POSITIONING.md
+    +-- INVESTOR_BRIEF.md
+    +-- assets/
+        +-- agentic_workflow.png
+        +-- discovery_loop.png
+        +-- extension_lifecycle.png
+        +-- multimodal_framework.png
+        +-- positioning_matrix.png
+        +-- self_learning_trajectory.png
+        +-- snptx_architecture.png
+        +-- SNPTX_Project_roadmap.png
+        +-- workflow_dag.png
+```
+
+This repository contains documentation and architectural specifications only. Source code, datasets, model artifacts, and execution scripts are maintained in private repositories.
+
+---
+
+## Team
+
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
+
 - drr508@g.harvard.edu
 - dan@snptx.ai

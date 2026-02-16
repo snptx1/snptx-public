@@ -66,11 +66,11 @@ Completed phases reflect operational capabilities. Planned phases reflect commit
 
 ## Phase 3: Evaluation + Extension Surface (Complete)
 
-**Objective:** Establish an extension surface for downstream analysis and collaboration.
+**Objective:** Establish an extension surface for downstream analysis and agentic workflow integration.
 
 - [x] Separate `snptx-extensions` repository established
 - [x] Tier-1 extension specification format defined
-- [x] Owner-runner execution boundary with contract validation
+- [x] Agentic execution boundary with contract validation
 - [x] Artifact-only, downstream execution model implemented
 - [x] Shared artifact semantics documented
 - [x] Reference Tier-1 modules implemented:
@@ -79,7 +79,17 @@ Completed phases reflect operational capabilities. Planned phases reflect commit
   - [x] `evaluation_summary_report`
 - [x] Deterministic outputs with auditable manifests
 
-**Outcome:** Collaboration-ready extension surface. Contributors build analytical modules without touching training pipelines or orchestration logic.
+**Outcome:** Agentic-workflow-ready extension surface. Automated agents and orchestrated workflows build analytical modules without touching training pipelines or core execution logic.
+
+### Agentic Workflow Architecture
+
+Phase 3 establishes the architectural foundation for agentic execution:
+
+- **Contract-driven interfaces** enable agents to generate, validate, and execute extensions autonomously
+- **Deterministic execution guarantees** ensure agent-produced results are reproducible across invocations
+- **Configuration-as-code** allows agents to modify pipeline behavior through YAML without source code changes
+- **Artifact immutability** provides full auditability of agent-generated outputs
+- **Typed input/output schemas** give agents structured boundaries for extension development
 
 ---
 
@@ -169,8 +179,46 @@ Completed phases reflect operational capabilities. Planned phases reflect commit
 
 ---
 
-## Contact
+## Documentation
 
-Roadmap questions or collaboration inquiries:
+For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).  
+For the development roadmap, see [ROADMAP.md](ROADMAP.md).  
+For the extension development model, see [DEVKIT_NOTES.md](DEVKIT_NOTES.md).  
+For strategic positioning, see [POSITIONING.md](POSITIONING.md).  
+
+---
+
+## Repository Structure
+
+```
+snptx-public/
++-- README.md
++-- docs/
+    +-- ARCHITECTURE.md
+    +-- ROADMAP.md
+    +-- DEVKIT_NOTES.md
+    +-- VISION.md
+    +-- POSITIONING.md
+    +-- INVESTOR_BRIEF.md
+    +-- assets/
+        +-- agentic_workflow.png
+        +-- discovery_loop.png
+        +-- extension_lifecycle.png
+        +-- multimodal_framework.png
+        +-- positioning_matrix.png
+        +-- self_learning_trajectory.png
+        +-- snptx_architecture.png
+        +-- SNPTX_Project_roadmap.png
+        +-- workflow_dag.png
+```
+
+This repository contains documentation and architectural specifications only. Source code, datasets, model artifacts, and execution scripts are maintained in private repositories.
+
+---
+
+## Team
+
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
+
 - drr508@g.harvard.edu
 - dan@snptx.ai

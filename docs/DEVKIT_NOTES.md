@@ -105,6 +105,34 @@ validation:
 
 ---
 
+## Agentic Workflow Execution
+
+![Extension Lifecycle](assets/extension_lifecycle.png)
+
+SNPTX extensions are designed to be authored and executed by agentic workflows: AI agents that autonomously generate analysis modules, validate contracts, run evaluations, and synthesize results.
+
+### Why Extensions Are Agent-Ready
+
+| Property | Agentic Benefit |
+|---|---|
+| Typed contracts | Agents validate extension schemas before execution |
+| Deterministic outputs | Agent-generated results are reproducible and auditable |
+| Artifact-only interfaces | Agents operate through file I/O, not API coupling |
+| Self-contained structure | Each extension is an independent, testable unit |
+| Configuration-driven behavior | Agents modify behavior through YAML, not code changes |
+
+### Agentic Extension Lifecycle
+
+1. **Generation.** An agent authors the extension directory structure, contract YAML, and execution script.
+2. **Validation.** The agent runs contract validation to verify input/output declarations match implementation.
+3. **Execution.** The agent invokes the extension against core pipeline artifacts.
+4. **Synthesis.** The agent consumes extension outputs for cross-run comparison or hypothesis generation.
+5. **Iteration.** Feedback from synthesis informs the next extension or configuration change.
+
+This lifecycle enables fully automated analytical workflows where agents build, execute, and iterate on extensions without manual intervention, while maintaining full reproducibility and auditability through the artifact-driven interface.
+
+---
+
 ## Extension Execution
 
 Extensions are invoked after the core pipeline completes:
@@ -126,7 +154,7 @@ Extension outputs are written to `results/extensions/{extension_name}/` and are 
 | Tier | Description | Review Level |
 |---|---|---|
 | Tier 1 | Core analysis capabilities shipped with SNPTX | Maintained by core team |
-| Tier 2 | Community-contributed extensions with validated contracts | Contract review required |
+| Tier 2 | Agent-generated or externally authored extensions with validated contracts | Contract review required |
 | Tier 3 | Experimental extensions for research exploration | Self-serve, no guarantees |
 
 Tier progression requires contract validation, test coverage, and documentation completeness.
@@ -149,13 +177,52 @@ These capabilities become available as the core pipeline integrates deep learnin
 
 ---
 
-## Contributing
+## Extension Submission
 
-See [CONTRIBUTING.md](../../snptx-extensions/CONTRIBUTING.md) for contribution guidelines, contract review process, and submission workflow.
+See [CONTRIBUTING.md](../../snptx-extensions/CONTRIBUTING.md) for extension submission guidelines, contract review process, and integration workflow.
 
 ---
 
-## Contact
+## Documentation
+
+For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).  
+For the development roadmap, see [ROADMAP.md](ROADMAP.md).  
+For the extension development model, see [DEVKIT_NOTES.md](DEVKIT_NOTES.md).  
+For strategic positioning, see [POSITIONING.md](POSITIONING.md).  
+
+---
+
+## Repository Structure
+
+```
+snptx-public/
++-- README.md
++-- docs/
+    +-- ARCHITECTURE.md
+    +-- ROADMAP.md
+    +-- DEVKIT_NOTES.md
+    +-- VISION.md
+    +-- POSITIONING.md
+    +-- INVESTOR_BRIEF.md
+    +-- assets/
+        +-- agentic_workflow.png
+        +-- discovery_loop.png
+        +-- extension_lifecycle.png
+        +-- multimodal_framework.png
+        +-- positioning_matrix.png
+        +-- self_learning_trajectory.png
+        +-- snptx_architecture.png
+        +-- SNPTX_Project_roadmap.png
+        +-- workflow_dag.png
+```
+
+This repository contains documentation and architectural specifications only. Source code, datasets, model artifacts, and execution scripts are maintained in private repositories.
+
+---
+
+## Team
+
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
 
 - drr508@g.harvard.edu
 - dan@snptx.ai
