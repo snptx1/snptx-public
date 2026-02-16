@@ -179,7 +179,7 @@ These capabilities become available as the core pipeline integrates deep learnin
 
 ## Extension Submission
 
-See [CONTRIBUTING.md](../../snptx-extensions/CONTRIBUTING.md) for extension submission guidelines, contract review process, and integration workflow.
+Extension submission guidelines, contract review processes, and integration workflows are documented in the extensions repository. See the SNPTX Extensions project for details.
 
 ---
 
@@ -222,7 +222,7 @@ This repository contains documentation and architectural specifications only. So
 
 ## Team
 
-- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
+**Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.
 
-- drr508@g.harvard.edu
-- dan@snptx.ai
+drr508@g.harvard.edu  
+dan@snptx.ai

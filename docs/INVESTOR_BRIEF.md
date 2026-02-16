@@ -94,12 +94,6 @@ Seeking pre-seed investment to:
 
 ---
 
-## Team
-
-- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.
-
----
-
 ## Documentation
 
 For detailed technical architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).  
@@ -139,7 +133,7 @@ This repository contains documentation and architectural specifications only. So
 
 ## Team
 
-- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.  
+**Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.
 
-- drr508@g.harvard.edu
-- dan@snptx.ai
+drr508@g.harvard.edu  
+dan@snptx.ai
