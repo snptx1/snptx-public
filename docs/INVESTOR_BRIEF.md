@@ -93,7 +93,7 @@ The capital-efficient development model (single-developer architecture, cloud-na
 
 ## Team
 
-- **Dan Russell** — MITx (SDS) Harvard ALM (DS)'27, systems architecture, biomedical ML infrastructure
+- **Dan Russell** — MITx (SDS) Harvard ALM (DS) '27, systems architecture, biomedical ML infrastructure
 
 ---
 
