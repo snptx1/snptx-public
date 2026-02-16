@@ -1,221 +1,197 @@
 # SNPTX Architecture
 
-This document defines the technical architecture of the SNPTX system. It describes the core framework, the extension governance model, artifact flows, deterministic execution guarantees, and the collaboration philosophy that together enable reproducible, auditable biomedical machine learning workflows.
+This document defines the technical architecture of the SNPTX system: the core framework, the extension model, artifact flows, deterministic execution design, and the deep learning integration strategy that together enable reproducible, scalable biomedical machine learning.
 
 ---
 
 ## 1. Design Principles
 
-SNPTX is built on six architectural commitments that constrain all design decisions:
+SNPTX is built on six architectural commitments:
 
-**Modularity.** Core orchestration and downstream analytical logic are strictly separated. Each extension operates as an independent, testable unit with explicit inputs and outputs. No extension may import, modify, or depend on core implementation details.
+**Modularity.** Core orchestration and downstream analytical logic are strictly separated. Each extension operates as an independent, testable unit with explicit inputs and outputs.
 
-**Reproducibility.** Data, models, and analytical artifacts are versioned. Identical inputs must yield identical outputs across runs. This is a structural guarantee, not a best-practice suggestion.
+**Reproducibility.** Data, models, and analytical artifacts are versioned. Identical inputs produce identical outputs across runs. This is a structural guarantee, not a best-practice suggestion.
 
-**Determinism by Design.** Downstream extensions emit stable, schema-defined artifacts with deterministic ordering and formatting. Random seeds are fixed. Configuration state is explicit. Implicit dependencies are prohibited.
+**Determinism by Design.** Random seeds are fixed. Configuration state is explicit. Implicit dependencies are prohibited. This creates the stable foundation required for reliable deep learning experimentation.
 
-**Traceability.** Every artifact can be traced to upstream inputs, configuration state, and execution context without ambiguity. Provenance is preserved through lineage metadata, not through inspection of intermediate state.
+**Traceability.** Every artifact can be traced to upstream inputs, configuration state, and execution context. Provenance is preserved through lineage metadata, enabling cross-run comparison and hypothesis validation.
 
-**Collaboration Without Loss of Control.** External contributors work within a constrained extension surface. Execution remains owner-mediated. The system maximizes collaboration while preserving architectural integrity.
+**Model Agnosticism.** The framework does not constrain model architecture. Logistic regression, transformer networks, graph neural networks, and foundation models operate within the same orchestration layer.
 
-**Extensibility.** The system supports future learning methods, intelligent analysis layers, and interactive interfaces without refactoring the core. New capabilities are added as extensions, not as core modifications.
+**Extensibility.** New learning methods, analysis layers, and feedback mechanisms are added as extensions, not as core modifications.
 
 ---
 
 ## 2. System Layers
 
-SNPTX is organized into distinct layers, each with a defined purpose and clear boundaries:
+![SNPTX Architecture](assets/snptx_architecture.png)
 
 | Layer | Purpose | Implementation |
 |---|---|---|
-| **Data & Knowledge Ingestion** | Ingest, validate, and version raw datasets and derived features | CSV pipelines, DVC, cloud storage |
+| **Data and Knowledge Ingestion** | Ingest, validate, and version raw datasets and derived features | CSV pipelines, DVC, cloud storage |
 | **Core Framework** | Orchestrate pipelines, manage experiments, control configuration and lineage | Snakemake, MLflow, DVC, YAML |
-| **Evaluation & Diagnostics Extensions** | Downstream evaluation, diagnostics, and metric normalization | Tier-1 governed extensions |
-| **Reporting & Interface Extensions** | Human-readable summaries and machine-consumable reports | Tier-1 governed extensions |
-| **Governance & Audit Layer** | Provenance tracking, contract validation, system documentation | Built into core and runner |
-| **Automation & Optimization** *(Future)* | Feedback-driven learning, resource optimization | Planned |
-| **Model & Learning Extensions** *(Future)* | Advanced learning methods and model libraries | Planned |
-
-![SNPTX Architecture](assets/snptx_architecture.png)
+| **Model and Learning Layer** | Train models across architectures and modalities | Model-agnostic, config-driven |
+| **Evaluation and Diagnostics** | Downstream evaluation, diagnostics, and metric normalization | Tier-1 extensions |
+| **Reporting and Synthesis** | Human-readable summaries, cross-run comparison, insight generation | Tier-1 extensions |
+| **Feedback and Self-Learning** *(Future)* | Artifact-driven feedback, hypothesis generation, config adjustment | Planned extensions |
 
 ---
 
 ## 3. Core Framework
 
-The SNPTX Core Framework is intentionally narrow in scope. It is responsible for exactly four concerns:
+The core is intentionally narrow. It handles four concerns:
 
 ### 3.1 Pipeline Orchestration
 
-Snakemake defines reproducible Directed Acyclic Graphs (DAGs) connecting data ingestion, validation, training, evaluation, summarization, and reporting. Each pipeline stage is an independent rule with explicit inputs and outputs. The DAG enforces execution ordering and enables incremental re-execution when inputs change.
+Snakemake defines reproducible DAGs connecting data ingestion, validation, training, evaluation, summarization, and reporting. Each pipeline stage is an independent rule with explicit inputs and outputs. The DAG supports:
 
-The pipeline includes:
-- Data validation against schema definitions
+- Parameterized model training with configurable sweeps across architectures and hyperparameters
 - Deterministic train/test splitting with fixed seeds
-- Parameterized model training with configurable sweeps
-- Automated evaluation and metric generation
-- Summary aggregation and report generation
+- Data validation against schema definitions
+- Incremental re-execution when inputs or configuration change
 
 ### 3.2 Experiment Tracking
 
-MLflow records parameters, metrics, artifacts, and model versions for every training and evaluation run. The experiment registry provides:
-- Run-level parameter and metric logging
-- Artifact association (models, plots, confusion matrices)
-- Model version tracking and promotion stages
-- Programmatic access to historical run data
+MLflow records parameters, metrics, artifacts, and model versions for every run. This provides:
+
+- Run-level parameter and metric logging across model architectures
+- Model version tracking with promotion stages
+- Cross-run comparison for systematic model selection
+- Programmatic access to historical experiment data
 
 ### 3.3 Artifact Management
 
-DVC manages datasets, trained models, and derived artifacts across local and remote storage. Artifact management ensures:
+DVC manages datasets, trained models, embeddings, and derived artifacts across local and remote storage:
+
 - Large file versioning outside of Git
-- Remote storage synchronization
-- Reproducible artifact retrieval across environments
+- Remote storage synchronization across environments
+- Reproducible artifact retrieval for any historical experiment
 
 ### 3.4 Configuration and Lineage Control
 
-YAML-based configuration files define datasets, features, target columns, parameter ranges, and experiment metadata. Configuration is the sole mechanism for controlling pipeline behavior — no code branching for dataset or parameter changes.
-
-**The core does not implement analytical interpretation logic.** That responsibility belongs exclusively to the extension layer.
+YAML-based configuration controls datasets, features, target columns, parameter ranges, model selections, and experiment metadata. Configuration is the sole mechanism for controlling pipeline behavior.
 
 ---
 
-## 4. Execution Isolation Model
+## 4. Deep Learning Integration Architecture
 
-The boundary between core and extensions is the central architectural constraint of SNPTX.
+SNPTX is designed as the infrastructure layer for deep learning experimentation in biomedical applications. The architecture supports advanced model types through configuration, not code coupling.
 
-### What the Core Controls
-- Pipeline DAG definition and execution ordering
-- Model training and basic evaluation
-- Artifact generation and versioning
-- Experiment metadata logging
-- Extension invocation (via the owner-runner)
+### 4.1 Architecture Support
 
-### What Extensions Control
-- Downstream evaluation and diagnostics
-- Metric normalization and aggregation
-- Human-readable report generation
-- Cohort and slice analysis *(future)*
-- Intelligent summarization *(future)*
+| Architecture | Integration Pattern | Application |
+|---|---|---|
+| Transformers | Config-driven training rules, MLflow logging, DVC model versioning | EHR sequence modeling, clinical NLP, omics feature extraction |
+| Graph Neural Networks | Parameterized graph construction, message-passing configurations | Molecular property prediction, knowledge graph reasoning |
+| Representation Learning | Embedding output as versioned artifacts, downstream consumption by extensions | Biomarker discovery, patient phenotyping |
+| Multi-Modal Fusion | Parallel data tracks, shared embedding space, cross-modal evaluation | Combined clinical + omics + imaging analysis |
+| Contrastive Learning | Paired sample configuration, similarity metric tracking | Patient similarity, cohort discovery |
+| Foundation Model Fine-Tuning | Pre-trained checkpoint management via DVC, adapter configuration via YAML | Domain adaptation for biomedical tasks |
 
-### What Neither May Do
-- Extensions may not modify upstream artifacts
-- Extensions may not import core code
-- The core may not embed analytical interpretation logic
-- Neither may introduce implicit state dependencies
+### 4.2 Embedding Registry (Planned)
 
-This separation is enforced through physical repository isolation, contract validation at runtime, and owner-mediated invocation.
+As deep learning pipelines produce learned representations, the architecture supports an embedding registry: versioned, artifact-driven storage of embeddings linked to specific model versions, datasets, and configurations. This enables:
+
+- Downstream extensions to consume representations as stable artifacts
+- Cross-model embedding comparison through standardized interfaces
+- Transfer learning workflows with full provenance
+
+### 4.3 Hyperparameter Management
+
+The Snakemake DAG naturally supports parameterized sweeps. Combined with MLflow tracking, this enables:
+
+- Systematic exploration across model types and configurations
+- Full provenance over every hyperparameter combination
+- Structured comparison via evaluation extensions
 
 ---
 
-## 5. Tier-1 Extension System
+## 5. Extension System
 
-Tier-1 extensions are the primary mechanism for safe, structured collaboration.
+Extensions are the mechanism through which analytical interpretation, diagnostics, and synthesis occur.
 
-### 5.1 Location and Isolation
+### 5.1 Design
 
-All Tier-1 extensions live in a separate repository (`snptx-extensions`). They are never implemented inside the core repository. This physical separation ensures that analytical contributions cannot inadvertently modify orchestration, training, or configuration logic.
+All extensions:
+- Are strictly downstream of the core pipeline
+- Consume and produce artifacts only
+- Declare typed input/output contracts in `extension.yaml`
+- Produce deterministic outputs
+- Live in a separate repository, isolating analytical logic from core orchestration
 
-### 5.2 Execution Model
-
-Extensions are:
-- **Strictly downstream** — they consume outputs of the core pipeline
-- **Artifact-only** — no shared memory, no runtime coupling, no database access
-- **Owner-mediated** — invoked exclusively through the SNPTX owner-runner
-- **Deterministic** — identical inputs must produce identical outputs
-- **Auditable** — every invocation generates a manifest, captured logs, and hashed run IDs
-
-Direct execution of extensions is prohibited. The owner-runner validates contracts, captures stdout/stderr, computes deterministic run identifiers from hashed inputs, and writes auditable manifests.
-
-### 5.3 Contract System
-
-Each extension declares an `extension.yaml` contract specifying:
-- Input artifact requirements (names, types, schemas)
-- Output artifact declarations (names, types, locations)
-- Configuration parameters
-- ABI version compatibility
-- Compliance and provenance metadata
-
-The owner-runner validates these contracts at invocation time. Missing inputs, type mismatches, and schema violations are rejected before execution begins.
-
-### 5.4 Current Tier-1 Modules
+### 5.2 Current Modules
 
 | Extension | Category | Primary Output |
 |---|---|---|
-| `calibration_diagnostics` | Evaluation & Diagnostics | Calibration diagnostics JSON |
-| `metric_aggregation` | Evaluation & Diagnostics | Canonical `metrics.json` (aggregated) |
-| `evaluation_summary_report` | Reporting & Interface | Human-readable Markdown report |
-| `artifact_contract_checks` | Governance | Contract validation report |
+| `calibration_diagnostics` | Evaluation and Diagnostics | Calibration diagnostics JSON |
+| `metric_aggregation` | Evaluation and Diagnostics | Canonical `metrics.json` (aggregated) |
+| `evaluation_summary_report` | Reporting and Synthesis | Human-readable Markdown report |
+| `artifact_contract_checks` | Validation | Contract validation report |
 
-These modules form a coherent downstream analytical pipeline from raw evaluation outputs through normalized metrics to human-readable summaries.
+### 5.3 Planned Extension Directions
+
+- **Cohort and slice analysis**: per-cohort metric comparison and ranking
+- **Explainability modules**: SHAP values, feature importance, interpretability reports
+- **Cross-run synthesis**: pattern identification across evaluation histories
+- **Hypothesis generation**: structured suggestions derived from accumulated evidence
+- **Embedding analysis**: representation quality assessment and comparison
 
 ---
 
 ## 6. Artifact Flow
 
-The SNPTX artifact flow enforces a strict linear progression from computation to interpretation:
-
 ```
-1. Upstream Training & Evaluation
-   └─ Core pipeline emits evaluation artifacts (metrics JSON, confusion matrices, model files)
+1. Data Ingestion and Validation
+   Core pipeline ingests, validates, and splits data
 
-2. Diagnostics & Normalization
-   └─ Tier-1 evaluation extensions analyze and normalize metrics
+2. Training and Registration
+   Models are trained, logged to MLflow, versioned via DVC
 
-3. Aggregation Layer
-   └─ Canonical artifacts (metrics.json) provide stable interfaces between analytics and reporting
+3. Evaluation
+   Core pipeline evaluates models, emits metrics, confusion matrices, and comparison artifacts
 
-4. Reporting
-   └─ Reporting extensions consume canonical artifacts to generate human-readable summaries
+4. Diagnostics and Normalization
+   Tier-1 extensions analyze and normalize evaluation outputs
+
+5. Aggregation and Reporting
+   Canonical artifacts provide stable interfaces for human-readable summaries
+
+6. Feedback and Synthesis (Planned)
+   Cross-run analysis generates hypotheses that feed back into pipeline configuration
 ```
 
-Each stage boundary is defined by persisted, immutable artifacts. No stage may reach into the implementation of another. This architecture enables independent verification, reproducible replay, and safe extension development.
-
-![Workflow DAG](assets/workflow_dag.png)
+Each stage boundary is defined by persisted, immutable artifacts. No stage reaches into the implementation of another.
 
 ---
 
-## 7. Governance and Audit
+## 7. Self-Learning Architecture (Design Target)
 
-### 7.1 Provenance Tracking
+The SNPTX architecture is designed to support closed-loop feedback between evaluation outputs and upstream pipeline configuration. This is an architectural target with defined technical prerequisites.
 
-Every extension invocation produces:
-- A `manifest.json` containing runner version, timestamp, extension metadata, input hashes, output paths, and computed run ID
-- Captured `stdout.log` and `stderr.log`
-- Deterministic run IDs computed from the hash of extension identity, input content, and configuration
+### How It Will Work
 
-### 7.2 Artifact Immutability
+1. **Evaluation extensions** emit structured evaluation artifacts across multiple runs
+2. **Synthesis extensions** identify patterns, anomalies, and trends across evaluation histories
+3. **Hypothesis artifacts** encode structured suggestions (e.g., feature importance shifts, model architecture recommendations)
+4. **Config-driven feedback** adjusts pipeline parameters through governed artifact channels, not through implicit state mutation
+5. **Human-in-the-loop review** ensures that feedback signals are advisory, not automatic
 
-Artifacts are immutable once written. The artifact semantics contract (documented separately) guarantees:
-- Artifact paths remain stable for the duration of each contract tier
-- Schema and semantic meaning do not change within a tier
-- Breaking changes require a new contract version
+### Design Constraints
 
-### 7.3 Violation Policy
-
-Extensions that assume undocumented artifact behavior, mutate upstream artifacts, or infer semantics from core source code are rejected without exception.
-
----
-
-## 8. The Feedback Loop (Architectural Design Target)
-
-The SNPTX architecture is designed to support a future closed-loop feedback mechanism between evaluation outputs and upstream pipeline behavior. This feedback loop is an architectural target, not a current capability.
-
-When implemented, the feedback loop will enable:
-- Insight synthesis across multiple evaluation runs
-- Structured hypothesis suggestion based on result patterns
-- Optional learning feedback signals (without automatic retraining)
-- Intelligent summarization driven by accumulated analytical artifacts
-
-The critical design constraint is that feedback must operate through the same artifact-driven, contract-governed interface as all other extensions. Feedback will not bypass determinism guarantees or introduce implicit state.
+- Feedback operates through the same artifact-driven interface as all other extensions
+- No automatic retraining without explicit authorization
+- Determinism guarantees are preserved through the feedback path
+- All feedback artifacts are versioned, traceable, and auditable
 
 ---
 
-## 9. Directory Structure
+## 8. Directory Structure
 
 ### Core Repository
 
 | Directory | Contents |
 |---|---|
-| `configs/` | Dataset, feature, and parameter definitions |
+| `configs/` | Dataset, feature, model, and parameter definitions |
 | `workflow/` | Snakemake DAG and core execution scripts |
 | `data/` | DVC-managed datasets (raw, processed, splits) |
 | `results/` | Models, metrics, plots, extension outputs |
@@ -228,24 +204,22 @@ The critical design constraint is that feedback must operate through the same ar
 |---|---|
 | `extensions/` | Tier-1 extension implementations |
 | `docs/tier1/` | Tier-1 module specifications |
-| `docs/artifact_semantics.md` | Shared artifact definitions and contract |
+| `docs/artifact_semantics.md` | Shared artifact definitions |
 
 ---
 
-## 10. Development Roadmap
+## 9. Future Directions
 
-![SNPTX Roadmap](assets/SNPTX_Project_roadmap.png)
+The following capabilities are planned as additive extensions:
 
-## 11. Future Extension Directions
+- **Deep learning model libraries**: transformer, GNN, and contrastive learning pipelines
+- **Multi-modal data fusion**: cross-modality training and evaluation
+- **Intelligent summarization**: artifact-driven insight synthesis across runs
+- **Embedding registry**: versioned representation storage with provenance
+- **Interactive dashboards**: read-only visualization backed by canonical artifacts
+- **API deployment layer**: deterministic artifact serving through structured endpoints
 
-The following capabilities are planned as additive extensions. None requires changes to the core framework:
-
-- **Cohort and slice analysis** — per-cohort metric comparison and deterministic ranking
-- **Explainability modules** — SHAP values, feature importance, and interpretability reports
-- **Intelligent summarization** — artifact-driven insight synthesis across runs
-- **Interactive dashboards** — read-only visualization backed by canonical artifacts
-- **API deployment layer** — deterministic artifact serving through structured endpoints
-- **Multi-modality support** — clinical, omics, imaging, and knowledge graph workflows via configuration
+None require changes to the core framework.
 
 ---
 

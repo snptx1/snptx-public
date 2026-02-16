@@ -1,99 +1,101 @@
-# SNPTX — Investor Brief
-
----
+# SNPTX Investor Brief
 
 ## Problem
 
-Biomedical machine learning is producing results that do not reproduce. The failure is not algorithmic — it is infrastructural. Research pipelines lack deterministic execution guarantees, artifact governance, and structured provenance. When multiple teams collaborate on analytical workflows, there is no architectural mechanism to prevent silent drift in methodology, data versioning, or interpretation logic.
+Biomedical machine learning generates enormous experimental volume, but lacks the infrastructure to make that experimentation cumulative. Labs run thousands of model variants without systematic comparison. Results drift as downstream analysis modifies interpretation. No single system connects experimentation, evaluation, and hypothesis generation into a closed loop.
 
-This problem is acute in three contexts:
-
-1. **Regulatory-adjacent ML** — FDA and EMA increasingly expect auditable, reproducible computational evidence. Existing tools log metrics but do not enforce the structural conditions for reproducibility.
-2. **Multi-site research** — Consortium studies require that independent collaborators contribute analysis without introducing uncontrolled variation. Current practice relies on social coordination, not architectural enforcement.
-3. **Commercial biotech R&D** — Pipeline integrity directly affects drug development timelines. A single unreproducible result can invalidate months of downstream analysis.
-
-The market lacks a framework that treats reproducibility and governance as architectural constraints rather than documentation aspirations.
+The reproducibility crisis in biomedical AI is fundamentally an infrastructure problem.
 
 ---
 
 ## Solution
 
-SNPTX is a deterministic orchestration framework for reproducible biomedical machine learning. It provides:
+SNPTX is a biomedical ML infrastructure framework that enforces deterministic execution, tracks every experiment with full provenance, versions all artifacts immutably, and provides a structured extension system for downstream analysis. It is designed to evolve toward a self-learning architecture where each experimental cycle informs the next.
 
-- **Pipeline orchestration** via Snakemake, defining reproducible DAGs from data ingestion through model evaluation and reporting.
-- **Experiment tracking** via MLflow, logging parameters, metrics, artifacts, and model versions for every run.
-- **Artifact versioning** via DVC, managing datasets, models, and derived outputs across local and remote storage.
-- **Extension governance** via a contract-driven, owner-mediated execution model that separates analytical interpretation from pipeline control.
+![Discovery Loop](assets/discovery_loop.png)
 
-The core framework is intentionally narrow: it controls what runs and when. Downstream analysis — diagnostics, metric normalization, reporting — is handled by governed extensions that consume artifacts through declared, validated contracts.
+SNPTX does not replace existing tools. It integrates Snakemake (orchestration), MLflow (experiment tracking), and DVC (artifact versioning) into a unified framework with architectural constraints that guarantee reproducibility and enable cumulative learning.
 
 ---
 
 ## Architecture Moat
 
-![SNPTX Architecture](assets/snptx_architecture.png)
+SNPTX's competitive advantage is architectural, not feature-based:
 
-SNPTX's competitive differentiation is architectural, not feature-based:
+1. **Deterministic DAG execution.** Snakemake pipelines with fixed seeds, versioned configuration, and rule-level provenance.
+2. **Structured extension boundary.** Extensions consume artifacts read-only, preventing analytical drift and enabling standardized model comparison.
+3. **Immutable artifact lineage.** Every model, metric, and evaluation output is versioned and traceable to its inputs, configuration, and code version.
+4. **Deep learning integration trajectory.** Architecture supports transformer-based models, graph neural networks, representation learning, and multi-modal fusion as first-class pipeline components.
+5. **Self-learning feedback design.** Evaluation artifacts feed back into configuration synthesis and hypothesis generation, creating closed-loop experimentation.
 
-**1. Execution–Interpretation Boundary**
-The separation between the core pipeline (what runs) and the extension layer (how results are interpreted) is not a convention — it is enforced through physical repository isolation, contract validation, and owner-mediated invocation. No competitor in the MLOps landscape implements this boundary.
+---
 
-**2. Contract-Driven Extension System**
-Every extension declares typed input/output contracts that are validated at runtime. The owner-runner generates deterministic run IDs, captures logs, and produces auditable manifests. This creates a governed collaboration surface that scales without sacrificing control.
+## Deep Learning Architecture Directions
 
-**3. Deterministic Execution Guarantees**
-Fixed seeds, versioned configuration, DAG-based orchestration, and artifact immutability create structural conditions for reproducibility. The system is designed so that identical inputs produce identical outputs — not as a best practice, but as an architectural invariant.
+| Direction | Application Domain | SNPTX Integration |
+|---|---|---|
+| Transformers | Clinical text, genomic sequences | Pipeline rule, embedding registry |
+| Graph Neural Networks | Protein interaction, drug-target networks | DAG-orchestrated, artifact-versioned |
+| Representation Learning | Low-dimensional biomedical feature spaces | Embedding persistence, cross-run comparison |
+| Multi-Modal Fusion | Imaging + genomics + clinical records | Parallel pipeline branches, unified evaluation |
+| Contrastive Learning | Label-efficient biomedical pretraining | Extension-based evaluation, calibration diagnostics |
+| Foundation Model Fine-Tuning | Domain adaptation for clinical tasks | MLflow tracking, artifact lineage, hyperparameter management |
 
-**4. Infrastructure Agnosticism**
-SNPTX is agnostic to model type, data modality, and learning methodology. It provides governance and orchestration within which any compliant analytical module can operate. This positions the framework as infrastructure, not tooling.
+---
+
+## Technical Differentiation
+
+![Positioning Matrix](assets/positioning_matrix.png)
+
+| Capability | MLflow | DVC | Kubeflow | SNPTX |
+|---|---|---|---|---|
+| DAG orchestration | No | Partial | Yes | Yes |
+| Experiment tracking | Yes | Partial | Yes | Yes |
+| Artifact versioning | Partial | Yes | Partial | Yes |
+| Structured extensions | No | No | No | Yes |
+| Self-learning trajectory | No | No | No | Planned |
+
+No existing platform combines all five capabilities. SNPTX occupies this unique intersection.
 
 ---
 
 ## Early Traction
 
-| Milestone | Status |
-|---|---|
-| Deterministic orchestration core (Snakemake + MLflow + DVC) | Operational |
-| End-to-end reproducible training pipeline | Operational |
-| Governed extension ecosystem with contract validation | Operational |
-| Three reference Tier-1 extensions (diagnostics, aggregation, reporting) | Complete |
-| Artifact semantics contract (frozen for Tier 1) | Published |
-| CI validation pipeline (GitHub Actions) | Operational |
-
-The framework has been developed and validated on clinical readmission prediction workflows using synthetic EHR data. The architecture is designed for multi-modality expansion (omics, imaging, knowledge graphs) through configuration, not code modification.
+- **Core pipeline operational.** Snakemake DAG orchestrates training, evaluation, and artifact persistence.
+- **MLflow integration live.** Experiment tracking with parameterized sweeps across multiple configurations.
+- **DVC artifact versioning configured.** S3 and GCS remote storage for model and data artifacts.
+- **Extension system functional.** First-tier extensions (calibration diagnostics, evaluation summary reports, metric aggregation) operational.
+- **CI pipeline configured.** GitHub Actions for dry-run validation on every push.
 
 ---
 
 ## Roadmap
 
-![SNPTX Roadmap](assets/SNPTX_Project_roadmap.png)
-
-| Horizon | Focus | Timeline |
+| Phase | Focus | Timeline |
 |---|---|---|
-| **Near-term** | Schema convergence, contract validation, intelligent summarization | Next |
-| **Medium-term** | Dashboard and API layer, cohort analysis, enterprise packaging | 6–12 months |
-| **Long-term** | Multi-modality expansion, closed-loop feedback, institutional deployment | 12–24 months |
-
-The architecture is designed so that each horizon builds on stable interfaces. Future capabilities are extensions, not refactors.
+| 1. Foundation | Deterministic training, evaluation, artifact persistence | Complete |
+| 2. Extension System | Contract-driven downstream analysis model | Complete |
+| 3. Multi-Run Intelligence | Cross-experiment synthesis, ensemble selection | Near-term |
+| 4. Deep Learning Integration | Transformers, GNNs, foundation models, embedding registry | Medium-term |
+| 5. Self-Learning Feedback | Configuration synthesis from evaluation history | Medium-term |
+| 6. Multi-Modal Expansion | Imaging + genomics + clinical fusion, federated deployment | Long-term |
 
 ---
 
 ## Funding Direction
 
-SNPTX is positioned for pre-seed or seed investment to accelerate:
+Seeking pre-seed investment to:
 
-1. **Core infrastructure hardening** — schema convergence, determinism verification, CI/CD execution (not just dry-run)
-2. **Extension ecosystem expansion** — cohort analysis, explainability, intelligent summarization
-3. **Market validation** — pilot deployments with 2–3 research labs or biotech R&D teams
-4. **Team expansion** — infrastructure engineering, biomedical domain expertise, go-to-market
-
-The capital-efficient development model (single-developer architecture, cloud-native infrastructure, no model training costs) enables meaningful progress at pre-seed scale.
+1. Expand deep learning integration across biomedical modalities (text, genomics, imaging, molecular graphs).
+2. Build cross-run synthesis and self-learning feedback infrastructure.
+3. Recruit domain-specific ML engineers for clinical and pharmaceutical verticals.
+4. Establish pilot partnerships with academic research labs and pharma R&D teams.
 
 ---
 
 ## Team
 
-- **Dan Russell** — MITx (SDS) Harvard ALM (DS) '27, systems architecture, biomedical ML infrastructure
+- **Dan Russell** (Founder), MITx (SDS), Harvard ALM (DS) '27. Systems architecture, biomedical ML infrastructure.
 
 ---
 

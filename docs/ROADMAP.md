@@ -1,33 +1,33 @@
 # SNPTX Roadmap
 
-This document defines the phased development plan for SNPTX, aligning technical milestones with the architectural separation between core framework and governed extension ecosystem.
+This document defines the phased development plan for SNPTX, aligning technical milestones with the trajectory from deterministic infrastructure through deep learning integration to self-learning discovery acceleration.
 
-The roadmap is a living reference. Completed phases reflect operational capabilities. Planned phases reflect committed architectural targets with defined technical prerequisites.
+Completed phases reflect operational capabilities. Planned phases reflect committed architectural targets with defined technical prerequisites.
 
 ---
 
 ## Guiding Objectives
 
-1. Build a reproducible, deterministic data-to-insight ML framework for biomedical applications.
-2. Separate pipeline orchestration from analytical interpretation at every layer.
-3. Enable safe collaboration through constrained, artifact-only extensions.
-4. Maintain lineage integrity and execution guarantees as the system scales.
+1. Build a reproducible, deterministic data-to-discovery ML framework for biomedical applications.
+2. Enable deep learning experimentation within infrastructure that guarantees reproducibility.
+3. Support multi-modal model integration through configuration, not code coupling.
+4. Implement structured self-learning feedback from evaluation outputs to pipeline configuration.
 5. Progress toward intelligent, interactive layers only after core interfaces stabilize.
 
 ---
 
 ## Roadmap Overview
 
+![SNPTX Roadmap](assets/SNPTX_Project_roadmap.png)
+
 | Phase | Focus | Status |
 |---|---|---|
 | **Phase 1** | Deterministic Core | Complete |
 | **Phase 2** | Training + Registry | Complete |
-| **Phase 3** | Evaluation + Promotion | Complete |
-| **Phase 4** | Self-Learning Loop | Planned |
-| **Phase 5** | Deployment + Interface Layer | Planned |
-| **Phase 6** | Multi-Dataset Expansion | Planned |
-
-![SNPTX Roadmap](assets/SNPTX_Project_roadmap.png)
+| **Phase 3** | Evaluation + Extension Surface | Complete |
+| **Phase 4** | Deep Learning Integration | Planned |
+| **Phase 5** | Self-Learning Feedback | Planned |
+| **Phase 6** | Multi-Modal Expansion + Deployment | Planned |
 
 ---
 
@@ -44,20 +44,19 @@ The roadmap is a living reference. Completed phases reflect operational capabili
 - [x] CI validation via GitHub Actions
 - [x] Deterministic train/test splitting with fixed seeds
 
-**Outcome:** A reproducible orchestration core where identical inputs produce identical outputs. Pipeline execution is fully defined by configuration and DAG structure.
+**Outcome:** Reproducible orchestration core where identical inputs produce identical outputs. Pipeline execution is fully defined by configuration and DAG structure.
 
 ---
 
 ## Phase 2: Training + Registry (Complete)
 
-**Objective:** End-to-end reproducible pipeline from raw data to registered models and reports.
+**Objective:** End-to-end reproducible pipeline from raw data to registered models.
 
 - [x] Parameter sweeps via Snakemake wildcards
 - [x] Automatic model evaluation and metric comparison
 - [x] Confusion matrix and structured metric generation
 - [x] Model registration in MLflow with version tracking
-- [x] Markdown and HTML report generation with commit provenance
-- [x] Git commit embedding in artifacts for traceability
+- [x] Report generation with commit provenance
 - [x] Multi-dataset ingestion support via configuration
 - [x] Fully materialized `results/` outputs
 
@@ -65,80 +64,84 @@ The roadmap is a living reference. Completed phases reflect operational capabili
 
 ---
 
-## Phase 3: Evaluation + Promotion (Complete)
+## Phase 3: Evaluation + Extension Surface (Complete)
 
-**Objective:** Establish a governed extension surface for downstream analysis and collaboration.
+**Objective:** Establish an extension surface for downstream analysis and collaboration.
 
 - [x] Separate `snptx-extensions` repository established
 - [x] Tier-1 extension specification format defined
-- [x] Owner-runner execution boundary enforced with contract validation
+- [x] Owner-runner execution boundary with contract validation
 - [x] Artifact-only, downstream execution model implemented
-- [x] Shared artifact semantics documented and frozen for Tier 1
+- [x] Shared artifact semantics documented
 - [x] Reference Tier-1 modules implemented:
-  - [x] `calibration_diagnostics` — evaluation diagnostics
-  - [x] `metric_aggregation` — canonical metric normalization
-  - [x] `evaluation_summary_report` — human-readable reporting
-- [x] Deterministic outputs written to core results directory
-- [x] Auditable manifest generation for every extension invocation
+  - [x] `calibration_diagnostics`
+  - [x] `metric_aggregation`
+  - [x] `evaluation_summary_report`
+- [x] Deterministic outputs with auditable manifests
 
-**Outcome:** A safe, reviewable collaboration surface. Contributors can build analytical modules without touching orchestration, training logic, or execution control.
+**Outcome:** Collaboration-ready extension surface. Contributors build analytical modules without touching training pipelines or orchestration logic.
 
 ---
 
-## Phase 4: Self-Learning Loop (Planned)
+## Phase 4: Deep Learning Integration (Planned)
 
-**Objective:** Enable structured feedback from evaluation outputs to upstream pipeline behavior.
+**Objective:** Extend the deterministic infrastructure to support advanced model architectures.
 
 **Next Technical Horizon**
 
-- [ ] Artifact contract validation extension (schema enforcement at runtime)
-- [ ] Extension schema convergence (single canonical contract format)
-- [ ] Canonical artifact adoption across all reporting modules
-- [ ] Intelligent summarization extension (artifact-driven insight synthesis)
-- [ ] Structured hypothesis suggestion based on cross-run result patterns
-- [ ] Feedback artifact specification (`feedback.json` contract)
-- [ ] Closed-loop demonstration: evaluation → feedback → configuration adjustment
+- [ ] Transformer training pipelines for EHR sequence modeling and clinical NLP
+- [ ] Graph neural network integration for molecular and knowledge graph reasoning
+- [ ] Representation learning pipelines with embedding output as versioned artifacts
+- [ ] Foundation model fine-tuning within deterministic checkpoint management
+- [ ] Hyperparameter search integration with structured comparison
+- [ ] Embedding registry: versioned representation storage with full provenance
+- [ ] Multi-model comparison extensions for systematic architecture evaluation
 
-**Design Constraints:**
-- Feedback must operate through the artifact-driven, contract-governed interface
-- No automatic retraining without explicit owner authorization
-- Determinism guarantees must be preserved through the feedback path
-- Feedback signals are optional and advisory, not prescriptive
+**Design Principle:** Deep learning pipelines operate within the same Snakemake + MLflow + DVC infrastructure. No special-case orchestration. Model complexity scales; infrastructure guarantees remain constant.
 
-**Outcome:** Insight augmentation layered atop stable analytical artifacts. The system becomes capable of learning from its own evaluation outputs without sacrificing reproducibility.
+**Outcome:** Researchers can train, compare, and iterate on deep learning models with the same reproducibility guarantees that apply to classical ML pipelines.
 
 ---
 
-## Phase 5: Deployment + Interface Layer (Planned)
+## Phase 5: Self-Learning Feedback (Planned)
 
-**Objective:** Expose deterministic artifacts through user-facing interfaces and structured APIs.
+**Objective:** Enable structured feedback from evaluation outputs to pipeline configuration.
+
+**Discovery Acceleration Target**
+
+- [ ] Cross-run synthesis extension: pattern identification across evaluation histories
+- [ ] Structured hypothesis generation from accumulated evidence
+- [ ] Feedback artifact specification (`feedback.json` contract)
+- [ ] Config-driven feedback loops: evaluation insights flow back into pipeline parameters
+- [ ] Closed-loop demonstration: evaluation, synthesis, hypothesis, configuration adjustment
+- [ ] Human-in-the-loop review for feedback validation
+
+**Design Constraints:**
+- Feedback operates through the artifact-driven interface
+- No automatic retraining without explicit authorization
+- Determinism guarantees are preserved through the feedback path
+- Feedback signals are advisory and traceable
+
+**Outcome:** The system learns from its own evaluation outputs. Researchers receive structured hypotheses that accelerate experimental iteration without sacrificing reproducibility.
+
+---
+
+## Phase 6: Multi-Modal Expansion + Deployment (Planned)
+
+**Objective:** Demonstrate framework generality across biomedical data modalities and deploy interfaces.
 
 **Commercialization Horizon**
 
-- [ ] Dashboard backed by deterministic, canonical artifacts
-- [ ] API endpoints for reports, metrics, and model metadata
-- [ ] Read-only external access patterns (no mutation through interfaces)
-- [ ] Slice-aware metric aggregation and cohort comparison extensions
-- [ ] Per-cohort comparison artifacts with deterministic delta outputs
-- [ ] User testing and feedback integration
+- [ ] Clinical classification, survival analysis, and cohort stratification
+- [ ] Omics data integration: embeddings, biomarker discovery, pathway analysis
+- [ ] Imaging pipeline support: histopathology, radiology feature extraction
+- [ ] Knowledge graph and molecular graph workflows
+- [ ] Multi-modal fusion: cross-modality training and evaluation
+- [ ] Contrastive learning for patient similarity and cohort discovery
+- [ ] Dashboard and API layer backed by deterministic artifacts
 - [ ] Enterprise packaging and multi-team deployment support
 
-**Outcome:** User-facing access to SNPTX outputs without compromising execution guarantees. The interface layer consumes artifacts; it does not produce them.
-
----
-
-## Phase 6: Multi-Dataset Expansion (Planned)
-
-**Objective:** Demonstrate framework generality across biomedical data modalities.
-
-- [ ] Clinical classification and survival analysis datasets
-- [ ] Omics data integration (embeddings, biomarker discovery)
-- [ ] Imaging pipeline support (CNN and transformer architectures)
-- [ ] Knowledge graph and NLP-derived embedding workflows
-- [ ] Cross-modality comparison through standardized artifact interfaces
-- [ ] Enhanced model registry workflows with multi-model tracking
-
-**Outcome:** SNPTX operates across data modalities through configuration, not code branching. Each track emits standardized artifacts for cross-modality comparability.
+**Outcome:** SNPTX operates across data modalities through configuration. Each modality emits standardized artifacts for cross-modal comparability. User-facing interfaces expose results without compromising execution guarantees.
 
 ---
 
@@ -148,19 +151,20 @@ The roadmap is a living reference. Completed phases reflect operational capabili
 |---|---|---|
 | Reproducible orchestration core | 1 | Complete |
 | End-to-end training pipeline | 2 | Complete |
-| Governed extension ecosystem | 3 | Complete |
-| Schema-driven contract convergence | 4 | Next |
-| Intelligent summarization | 4 | Planned |
-| API and dashboard layer | 5 | Planned |
-| Multi-modality support | 6 | Planned |
+| Extension ecosystem | 3 | Complete |
+| Deep learning pipeline support | 4 | Next |
+| Embedding registry | 4 | Planned |
+| Self-learning feedback | 5 | Planned |
+| Multi-modal expansion | 6 | Planned |
+| API and dashboard layer | 6 | Planned |
 
 ---
 
 ## Ongoing Practices
 
 - Architecture, README, and roadmap are kept synchronized
-- Artifact schemas are treated as public contracts with versioned stability guarantees
-- New capabilities are added as extensions, never as core modifications
+- Artifact schemas are treated as stable contracts
+- New capabilities are added as extensions, not core modifications
 - Milestones are tagged in Git for historical reference
 
 ---
