@@ -41,7 +41,7 @@ The infrastructure does not constrain what researchers can do. It guarantees tha
 
 SNPTX is designed to become the standard orchestration layer for reproducible biomedical ML: the infrastructure that research labs, pharmaceutical R&D teams, and multi-site consortia use to run deep learning experiments, compare model architectures, synthesize insights across runs, and generate structured hypotheses for the next cycle of discovery.
 
-The end state is a system where the distance between a research question and a reproducible, publishable computational result is measured in configuration changes, not engineering sprints.
+The end state is not a tool. It is an accelerant for scientific understanding: a system where every experiment builds on the last, every result is reproducible by default, and the pace of biomedical discovery is limited only by the quality of the questions asked.
 
 ---
 
