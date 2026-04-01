@@ -33,7 +33,7 @@ SNPTX is built on six architectural commitments:
 | **Model and Learning Layer** | Train models across architectures and modalities | Model-agnostic, config-driven |
 | **Evaluation and Diagnostics** | Downstream evaluation, diagnostics, and metric normalization | Tier-1 extensions |
 | **Reporting and Synthesis** | Human-readable summaries, cross-run comparison, insight generation | Tier-1 extensions |
-| **Feedback and Self-Learning** *(Future)* | Artifact-driven feedback, hypothesis generation, config adjustment | Planned extensions |
+| **Feedback and Self-Learning** | Experiment catalog, meta-analysis, adaptive defaults, causal feedback, Bayesian testing | 15 intelligence modules (887 total tests) |
 
 ---
 
@@ -164,17 +164,32 @@ Each stage boundary is defined by persisted, immutable artifacts. No stage reach
 
 ---
 
-## 7. Self-Learning Architecture (Design Target)
+## 7. Self-Learning Architecture (Implemented)
 
-The SNPTX architecture is designed to support closed-loop feedback between evaluation outputs and upstream pipeline configuration. This is an architectural target with defined technical prerequisites.
+The intelligence layer provides closed-loop feedback between evaluation outputs and upstream pipeline configuration. 15 modules across 2 tiers, backed by 555 tests.
 
-### How It Will Work
+### Core Intelligence (B1-B5, 70 tests)
 
-1. **Evaluation extensions** emit structured evaluation artifacts across multiple runs
-2. **Synthesis extensions** identify patterns, anomalies, and trends across evaluation histories
-3. **Hypothesis artifacts** encode structured suggestions (e.g., feature importance shifts, model architecture recommendations)
-4. **Config-driven feedback** adjusts pipeline parameters through governed artifact channels, not through implicit state mutation
-5. **Human-in-the-loop review** ensures that feedback signals are advisory, not automatic
+1. **Experiment Catalog (B1)** - DuckDB-backed persistent store accumulating results across runs
+2. **Meta-Analysis Engine (B2)** - cross-experiment pattern discovery, best-config recommendations
+3. **Feedback Loop v2 (B3)** - Bayesian confidence updating, Thompson sampling prioritization
+4. **Adaptive Defaults (B4)** - dataset-aware starting configuration recommendation
+5. **Hypothesis Templates (B5)** - 7 built-in declarative templates with trigger conditions
+
+### Theoretical Intelligence (B.6.1-B.6.10, 485 tests)
+
+| Module | Theory | Function |
+|---|---|---|
+| Meta-Features | Rice 1976 | Algorithm selection from dataset characteristics |
+| Surrogates | Snoek et al. 2012 | GP-based Bayesian optimization with acquisition |
+| Causal Feedback | Pearl 2009 | ATE, IPW, interrupted time series validation |
+| Experiment Design | Chaloner & Verdinelli 1995 | Information gain, SPRT, active learning |
+| Rule Mining | Muggleton & de Raedt 1994 | ILP rules with probabilistic calibration |
+| Multi-Objective | Deb et al. 2002 | NSGA-II Pareto optimization with fairness |
+| Continual Learning | Kirkpatrick et al. 2017 | EWC, drift detection, experience replay |
+| Bayesian Testing | Benavoli et al. 2017 | Signed-rank with ROPE, Friedman, bootstrap |
+| Information Theory | Cover & Thomas 2006 | Entropy, MI, MDL, feature ranking |
+| Scientific Discovery | Peirce 1903 | Surprise detection, symbolic regression, novelty |
 
 ### Design Constraints
 

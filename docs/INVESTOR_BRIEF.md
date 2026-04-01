@@ -67,6 +67,10 @@ No existing platform combines all five capabilities. SNPTX occupies this unique 
 - **DVC artifact versioning configured.** S3 and GCS remote storage for model and data artifacts.
 - **Extension system functional.** First-tier extensions (calibration diagnostics, evaluation summary reports, metric aggregation) operational.
 - **CI pipeline configured.** GitHub Actions for dry-run validation on every push.
+- **Multi-dataset foundation complete.** 46 adapters across 8 modality families (clinical, omics, imaging, molecular, spatial, knowledge graphs, text, time series).
+- **Intelligence layer operational.** 15 modules (5 core + 10 theoretical) enabling self-improving experimentation. System recommends starting configs for new datasets.
+- **887 tests passing.** Comprehensive coverage: Phase A (247), A.6 (85), B (70), B.6 (485).
+- **Interactive dashboard deployed.** 8-page Streamlit dashboard with real-time experiment monitoring.
 
 ---
 
@@ -76,10 +80,9 @@ No existing platform combines all five capabilities. SNPTX occupies this unique 
 |---|---|---|
 | 1. Foundation | Deterministic training, evaluation, artifact persistence | Complete |
 | 2. Extension System | Contract-driven downstream analysis model | Complete |
-| 3. Multi-Run Intelligence | Cross-experiment synthesis, ensemble selection | Near-term |
-| 4. Deep Learning Integration | Transformers, GNNs, foundation models, embedding registry | Medium-term |
-| 5. Self-Learning Feedback | Configuration synthesis from evaluation history | Medium-term |
-| 6. Multi-Modal Expansion | Imaging + genomics + clinical fusion, federated deployment | Long-term |
+| 3. Multi-Dataset + Intelligence | 46 adapters, 15 intelligence modules, 887 tests | Complete |
+| 4. Deep Learning Integration | Transformers, GNNs, foundation models, embedding registry | Near-term |
+| 5. Multi-Modal Expansion | Imaging + genomics + clinical fusion, federated deployment | Medium-term |
 
 ---
 

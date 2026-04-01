@@ -26,7 +26,7 @@ Completed phases reflect operational capabilities. Planned phases reflect commit
 | **Phase 2** | Training + Registry | Complete |
 | **Phase 3** | Evaluation + Extension Surface | Complete |
 | **Phase 4** | Deep Learning Integration | Planned |
-| **Phase 5** | Self-Learning Feedback | Planned |
+| **Phase 5** | Self-Learning Feedback | Complete |
 | **Phase 6** | Multi-Modal Expansion + Deployment | Planned |
 
 ---
@@ -113,26 +113,51 @@ Phase 3 establishes the architectural foundation for agentic execution:
 
 ---
 
-## Phase 5: Self-Learning Feedback (Planned)
+## Phase 5: Self-Learning Feedback (Complete)
 
 **Objective:** Enable structured feedback from evaluation outputs to pipeline configuration.
 
-**Discovery Acceleration Target**
+### Phase A.6: Theoretical Data Hardening (Complete)
 
-- [ ] Cross-run synthesis extension: pattern identification across evaluation histories
-- [ ] Structured hypothesis generation from accumulated evidence
-- [ ] Feedback artifact specification (`feedback.json` contract)
-- [ ] Config-driven feedback loops: evaluation insights flow back into pipeline parameters
-- [ ] Closed-loop demonstration: evaluation, synthesis, hypothesis, configuration adjustment
-- [ ] Human-in-the-loop review for feedback validation
+10 modules providing provable bounds for the data foundation layer (85 tests):
 
-**Design Constraints:**
-- Feedback operates through the artifact-driven interface
-- No automatic retraining without explicit authorization
-- Determinism guarantees are preserved through the feedback path
-- Feedback signals are advisory and traceable
+- [x] Probabilistic sketches (CountMin, HyperLogLog, Bloom, TDigest)
+- [x] LSH embedding search
+- [x] Streaming architecture (reservoir sampling)
+- [x] Graph features (centrality, spectral, Leiden community)
+- [x] Dimensionality reduction (randomized SVD)
+- [x] Clustering validation (silhouette, gap statistic)
+- [x] Feature selection (mutual information)
+- [x] External memory (DuckDB out-of-core)
+- [x] Pattern mining (frequent itemsets, association rules)
+- [x] Modern theory (Sinkhorn, conformal prediction, coresets)
 
-**Outcome:** The system learns from its own evaluation outputs. Researchers receive structured hypotheses that accelerate experimental iteration without sacrificing reproducibility.
+### Phase B: Intelligence Layer (Complete)
+
+5 core modules enabling self-improving experimentation (70 tests):
+
+- [x] Experiment Catalog (DuckDB-backed persistent store)
+- [x] Meta-Analysis Engine (cross-experiment pattern discovery)
+- [x] Feedback Loop v2 (Bayesian confidence updating)
+- [x] Adaptive Defaults (dataset-aware config recommendation)
+- [x] Hypothesis Templates (7 built-in declarative templates)
+
+### Phase B.6: Theoretical Intelligence Hardening (Complete)
+
+10 modules providing published theoretical justification for intelligence (485 tests):
+
+- [x] Meta-features (Rice 1976 algorithm selection, 38+ features)
+- [x] Surrogate models (GP-based Bayesian optimization)
+- [x] Causal feedback (ATE, IPW, interrupted time series)
+- [x] Experiment design (information gain, SPRT, active learning)
+- [x] Rule mining (ILP, probabilistic calibration, Bayesian networks)
+- [x] Multi-objective optimization (NSGA-II, Pareto, fairness)
+- [x] Continual learning (EWC, drift detection, experience replay)
+- [x] Bayesian testing (signed-rank with ROPE, Friedman, bootstrap)
+- [x] Information theory (entropy, MI, MDL, KL divergence)
+- [x] Scientific discovery (surprise detection, symbolic regression, novelty search)
+
+**Outcome:** The system learns from its own evaluation outputs. 887 total tests. Researchers receive structured hypotheses that accelerate experimental iteration without sacrificing reproducibility.
 
 ---
 
@@ -164,7 +189,11 @@ Phase 3 establishes the architectural foundation for agentic execution:
 | Extension ecosystem | 3 | Complete |
 | Deep learning pipeline support | 4 | Next |
 | Embedding registry | 4 | Planned |
-| Self-learning feedback | 5 | Planned |
+| Multi-dataset foundation (46 adapters) | 5 | Complete |
+| Theoretical data hardening (A.6, 85 tests) | 5 | Complete |
+| Intelligence layer (B1-B5, 70 tests) | 5 | Complete |
+| Theoretical intelligence (B.6, 485 tests) | 5 | Complete |
+| Interactive dashboard (8 pages) | 5 | Complete |
 | Multi-modal expansion | 6 | Planned |
 | API and dashboard layer | 6 | Planned |
 

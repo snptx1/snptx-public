@@ -63,13 +63,16 @@ The Snakemake DAG supports parameterized sweeps across model configurations. Com
 
 As multi-modal pipelines produce learned representations, SNPTX is designed to maintain an embedding registry: a versioned, artifact-driven store of embeddings linked to specific model versions, datasets, and training configurations. This enables downstream analysis to consume representations as stable artifacts. *(Planned)*
 
-### Self-Learning Extension Roadmap
+### Self-Learning Intelligence Layer
 
-The extension layer is designed to support structured feedback from evaluation outputs back to pipeline configuration:
+The intelligence layer provides structured feedback from evaluation outputs back to pipeline configuration:
 
-- **Cross-run synthesis** identifies patterns across evaluation histories *(Planned)*
-- **Hypothesis generation** surfaces structured suggestions from accumulated evidence *(Planned)*
-- **Config-driven feedback loops** enable closed-loop experimentation without violating determinism *(Planned)*
+- **Experiment Catalog** - DuckDB-backed persistent store accumulating results across every run *(Complete)*
+- **Meta-Analysis Engine** - cross-experiment pattern discovery and best-config recommendations *(Complete)*
+- **Feedback Loop v2** - Bayesian confidence updating for hypothesis effectiveness *(Complete)*
+- **Adaptive Defaults** - dataset-aware starting configuration recommendation *(Complete)*
+- **Hypothesis Templates** - declarative template system with 7 built-in templates *(Complete)*
+- **10 Theoretical Modules** - meta-features, surrogates, causal feedback, experiment design, rule mining, multi-objective optimization, continual learning, Bayesian testing, information theory, scientific discovery *(Complete)*
 
 ---
 
@@ -170,12 +173,21 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 | Calibration diagnostics extension | Complete |
 | Metric aggregation extension | Complete |
 | Evaluation summary reporting extension | Complete |
+| Multi-dataset foundation (46 adapters, 8 modalities) | Complete |
+| Theoretical data hardening (Phase A.6, 85 tests) | Complete |
+| Intelligence layer (B1-B5, 70 tests) | Complete |
+| Theoretical intelligence hardening (B.6, 485 tests) | Complete |
+| Interactive Streamlit dashboard (8 pages) | Complete |
 | Deep learning pipeline integration | Roadmap |
 | Multi-modal data support | Roadmap |
-| Self-learning feedback loop | Roadmap |
-| Embedding registry | Roadmap |
-| Interactive dashboards | Roadmap |
 | API deployment layer | Roadmap |
+
+| Metric | Value |
+|---|---|
+| Total tests | 887 |
+| Dataset adapters | 46 (37 production + 9 deferred) |
+| Modality families | 8 |
+| Intelligence modules | 15 (5 core + 10 theoretical) |
 
 ---
 
