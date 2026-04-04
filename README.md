@@ -48,11 +48,11 @@ The pipeline orchestration layer is independent of model architecture. Any model
 
 | Architecture | Application Domain | Status |
 |---|---|---|
-| **Transformer models** | EHR sequence modeling, clinical note embedding, omics feature extraction | Roadmap |
-| **Graph neural networks** | Molecular property prediction, knowledge graph reasoning, drug-target interaction | Roadmap |
-| **Representation learning** | Biomarker discovery, patient embedding, unsupervised phenotyping | Roadmap |
-| **Multi-modal fusion** | Cross-modality prediction combining clinical, omics, and imaging features | Roadmap |
-| **Contrastive learning** | Patient similarity, cohort discovery, representation alignment | Roadmap |
+| **Transformer models** | EHR sequence modeling, clinical note embedding, omics feature extraction | Complete |
+| **Graph neural networks** | Molecular property prediction, knowledge graph reasoning, drug-target interaction | Complete |
+| **Representation learning** | Biomarker discovery, patient embedding, unsupervised phenotyping | Complete |
+| **Multi-modal fusion** | Cross-modality prediction combining clinical, omics, and imaging features | Complete |
+| **Contrastive learning** | Patient similarity, cohort discovery, representation alignment | Complete |
 | **Foundation model fine-tuning** | Domain adaptation of pre-trained biomedical models within deterministic pipelines | Roadmap |
 
 ### Hyperparameter Search Integration
@@ -177,17 +177,19 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 | Theoretical data hardening (Phase A.6, 85 tests) | Complete |
 | Intelligence layer (B1-B5, 70 tests) | Complete |
 | Theoretical intelligence hardening (B.6, 485 tests) | Complete |
-| Interactive Streamlit dashboard (8 pages) | Complete |
-| Deep learning pipeline integration | Roadmap |
-| Multi-modal data support | Roadmap |
+| Interactive Streamlit dashboard (9 pages) | Complete |
+| Multi-modal expansion (Phase C, 7 modalities + fusion) | Complete |
+| Theoretical multi-modal hardening (Phase C.6, 6 modules) | Complete |
+| Deep learning pipeline integration | Complete |
 | API deployment layer | Roadmap |
 
 | Metric | Value |
 |---|---|
-| Total tests | 887 |
+| Total tests | 1,056 |
 | Dataset adapters | 46 (37 production + 9 deferred) |
 | Modality families | 8 |
 | Intelligence modules | 15 (5 core + 10 theoretical) |
+| Multi-modal modules | 6 (alignment, graph, imaging, NLP, fusion, uncertainty) |
 
 ---
 
