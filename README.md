@@ -180,6 +180,8 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 | Interactive Streamlit dashboard (9 pages) | Complete |
 | Multi-modal expansion (Phase C, 7 modalities + fusion) | Complete |
 | Theoretical multi-modal hardening (Phase C.6, 6 modules) | Complete |
+| Autonomous experimentation engine (1,065 experiments) | Complete |
+| 8-check accuracy audit framework | Complete |
 | Deep learning pipeline integration | Complete |
 | API deployment layer | Roadmap |
 
@@ -190,6 +192,8 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 | Modality families | 8 |
 | Intelligence modules | 15 (5 core + 10 theoretical) |
 | Multi-modal modules | 6 (alignment, graph, imaging, NLP, fusion, uncertainty) |
+| Autonomous experiments completed | 1,065 |
+| Autonomous discoveries | 101 |
 
 ---
 
