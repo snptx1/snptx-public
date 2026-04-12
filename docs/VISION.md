@@ -16,8 +16,8 @@ The trajectory is deliberate:
 
 1. **Deterministic execution.** The system produces reliable, reproducible outputs. *(Complete)*
 2. **Structured evaluation.** Downstream extensions normalize, aggregate, and report on outputs. *(Complete)*
-3. **Deep learning integration.** Transformer, GNN, and foundation model pipelines operate within deterministic infrastructure. *(Planned)*
-4. **Agentic workflow execution.** Autonomous agents author extensions, execute pipelines, synthesize evaluations, and propose configurations. *(Planned)*
+3. **Deep learning integration.** Transformer, GNN, and foundation model pipelines operate within deterministic infrastructure. *(Complete)*
+4. **Agentic workflow execution.** Autonomous agents author extensions, execute pipelines, synthesize evaluations, and propose configurations. *(Complete)*
 5. **Cross-run synthesis.** The system identifies patterns and anomalies across evaluation histories. *(Complete - Meta-Analysis Engine, B2)*
 6. **Hypothesis generation.** Structured suggestions emerge from accumulated evidence. *(Complete - Hypothesis Templates, B5; Scientific Discovery, B.6.10)*
 7. **Closed-loop feedback.** Insights flow back into pipeline configuration through governed artifact channels. *(Complete - Feedback Loop v2, B3; Adaptive Defaults, B4)*

@@ -33,7 +33,7 @@ SNPTX is built on six architectural commitments:
 | **Model and Learning Layer** | Train models across architectures and modalities | Model-agnostic, config-driven |
 | **Evaluation and Diagnostics** | Downstream evaluation, diagnostics, and metric normalization | Tier-1 extensions |
 | **Reporting and Synthesis** | Human-readable summaries, cross-run comparison, insight generation | Tier-1 extensions |
-| **Feedback and Self-Learning** | Experiment catalog, meta-analysis, adaptive defaults, causal feedback, Bayesian testing | 15 intelligence modules (887 total tests) |
+| **Feedback and Self-Learning** | Experiment catalog, meta-analysis, adaptive defaults, causal feedback, Bayesian testing | 15 intelligence modules (1,056 total tests) |
 
 ---
 
@@ -88,7 +88,7 @@ SNPTX is designed as the infrastructure layer for deep learning experimentation 
 | Contrastive Learning | Paired sample configuration, similarity metric tracking | Patient similarity, cohort discovery |
 | Foundation Model Fine-Tuning | Pre-trained checkpoint management via DVC, adapter configuration via YAML | Domain adaptation for biomedical tasks |
 
-### 4.2 Embedding Registry (Planned)
+### 4.2 Embedding Registry (Implemented)
 
 As deep learning pipelines produce learned representations, the architecture supports an embedding registry: versioned, artifact-driven storage of embeddings linked to specific model versions, datasets, and configurations. This enables:
 
@@ -156,7 +156,7 @@ All extensions:
 5. Aggregation and Reporting
    Canonical artifacts provide stable interfaces for human-readable summaries
 
-6. Feedback and Synthesis (Planned)
+6. Feedback and Synthesis (Implemented)
    Cross-run analysis generates hypotheses that feed back into pipeline configuration
 ```
 

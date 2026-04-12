@@ -53,7 +53,7 @@ The pipeline orchestration layer is independent of model architecture. Any model
 | **Representation learning** | Biomarker discovery, patient embedding, unsupervised phenotyping | Complete |
 | **Multi-modal fusion** | Cross-modality prediction combining clinical, omics, and imaging features | Complete |
 | **Contrastive learning** | Patient similarity, cohort discovery, representation alignment | Complete |
-| **Foundation model fine-tuning** | Domain adaptation of pre-trained biomedical models within deterministic pipelines | Roadmap |
+| **Foundation model fine-tuning** | Domain adaptation of pre-trained biomedical models within deterministic pipelines | Complete |
 
 ### Hyperparameter Search Integration
 
@@ -61,7 +61,7 @@ The Snakemake DAG supports parameterized sweeps across model configurations. Com
 
 ### Embedding Registry
 
-As multi-modal pipelines produce learned representations, SNPTX is designed to maintain an embedding registry: a versioned, artifact-driven store of embeddings linked to specific model versions, datasets, and training configurations. This enables downstream analysis to consume representations as stable artifacts. *(Planned)*
+As multi-modal pipelines produce learned representations, SNPTX maintains an embedding registry: a versioned, artifact-driven store of embeddings linked to specific model versions, datasets, and training configurations. This enables downstream analysis to consume representations as stable artifacts.
 
 ### Self-Learning Intelligence Layer
 
@@ -180,10 +180,11 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 | Interactive Streamlit dashboard (9 pages) | Complete |
 | Multi-modal expansion (Phase C, 7 modalities + fusion) | Complete |
 | Theoretical multi-modal hardening (Phase C.6, 6 modules) | Complete |
-| Autonomous experimentation engine (1,065 experiments) | Complete |
+| Autonomous experimentation engine (1,100 experiments, 104 discoveries) | Complete |
+| Phase D: Clinical Deployment Readiness (serving, safety, monitoring) | In Progress |
 | 8-check accuracy audit framework | Complete |
 | Deep learning pipeline integration | Complete |
-| API deployment layer | Roadmap |
+| API deployment layer | In Progress |
 
 | Metric | Value |
 |---|---|
@@ -192,8 +193,8 @@ Package capabilities for institutional deployment. Expose deterministic artifact
 | Modality families | 8 |
 | Intelligence modules | 15 (5 core + 10 theoretical) |
 | Multi-modal modules | 6 (alignment, graph, imaging, NLP, fusion, uncertainty) |
-| Autonomous experiments completed | 1,065 |
-| Autonomous discoveries | 101 |
+| Autonomous experiments completed | 1,100 |
+| Autonomous discoveries | 104 |
 
 ---
 
