@@ -33,7 +33,7 @@ Deploy the GCN-based drug discovery pipeline with knowledge graph integration on
 - Integration with existing compound screening workflows
 - Artifact-versioned pipeline reproducible on any compatible environment
 
-**Demonstrated performance:** 92.1% accuracy on ChEMBL bioactivity (binary), 91.8% ± 0.9% 5-fold CV.
+**Note on the bioactivity smoke test:** the ChEMBL bioactivity GCN is a reproducible, determinism-checked pipeline, not a predictive benchmark. With leaky value-derived features removed, its structure/context-only accuracy is 67.6%, below the 72.5% majority-class baseline. Predictive drug-discovery evaluation is reported separately in the drug-synergy work.
 
 ---
 

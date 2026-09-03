@@ -136,7 +136,7 @@ Every model is compared against majority-class and random baselines. All reporte
 | Histopathology | 36.2% ± 2.1% | 0.210 ± 0.034 |
 | Clinical text | 34.8% ± 1.8% | 0.321 ± 0.021 |
 | Single-cell | 76.5% ± 1.1% | 0.739 ± 0.011 |
-| Drug discovery | 91.8% ± 0.9% | 0.905 ± 0.009 |
+| Drug discovery | 67.6% (de-leaked single run; below 72.5% majority baseline) | 0.549 |
 | Multi-modal fusion | 88.9% ± 0.9% | 0.896 ± 0.010 |
 
 ### 5-Seed Stability

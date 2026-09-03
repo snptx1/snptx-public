@@ -173,7 +173,7 @@ Phase 3 establishes the architectural foundation for agentic execution:
 - [x] Imaging: histopathology classification (ResNet-50, 36.4% on 8-class Visium)
 - [x] Text: clinical note classification (BERT, 34.1% on MTSamples 22 specialties)
 - [x] Single-cell: cell type classification (VAE, 76.9% on PBMC 3k)
-- [x] Drug discovery: bioactivity prediction (GCN, 92.1% on ChEMBL)
+- [x] Drug discovery: bioactivity pipeline (GCN; structure/context-only smoke test, 67.6%, below 72.5% majority baseline after de-leaking)
 - [x] Multi-modal fusion: attention fusion exceeds best non-omics unimodal (controlled benchmark: 88.3% vs 76.9%)
 - [x] Autonomous experimentation: 1,100 experiments across 5 datasets × 6 model types, 104 discoveries
 - [x] 8-check accuracy audit: k-fold CV, multi-seed stability, bootstrap CIs, spatial stratification, fusion holdout, conformal prediction, learning curves, trivial baselines

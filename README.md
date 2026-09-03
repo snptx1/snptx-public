@@ -68,7 +68,7 @@ SNPTX has been validated across 7 biomedical data modalities plus multi-modal fu
 | Histopathology | Visium H&E patches (n=3,798) | ResNet-50 | 36.4% | 8-class, random baseline 12.5% |
 | Clinical text | MTSamples (n=4,652) | BERT | 34.1% | 22-specialty, random baseline 4.5% |
 | Single-cell | PBMC 3k (n=2,700) | VAE | 76.9% | 5-fold CV, 76.5% ± 1.1% |
-| Drug discovery | ChEMBL bioactivity (n=4,685) | GCN | 92.1% | 5-fold CV, 91.8% ± 0.9% |
+| Drug discovery | ChEMBL bioactivity (n=4,685) | GCN | 67.6% | Structure/context-only smoke test; below 72.5% majority baseline |
 | **Multi-modal fusion** | **Visium (omics + imaging + spatial)** | **Attention fusion** | **88.3%** | **Holdout; exceeds best non-omics unimodal (76.9%)** |
 
 ### Validation Methodology (8-Check Audit)
